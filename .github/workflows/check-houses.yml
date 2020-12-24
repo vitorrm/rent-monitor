@@ -13,8 +13,12 @@ jobs:
         with:
           node-version: '12'
       - run: npm install
+      - uses: actions/download-artifact@v2
+        with:
+          name: houses-list
+          path: workdir/houses.json
       - run: npm start
       - uses: actions/upload-artifact@v2
         with:
-          name: houses
-          path: houses.json
+          name: houses-list
+          path: workdir/houses.json
