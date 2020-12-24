@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer')
 const { OrtecPage } = require('./lib/OrtecPage')
 const { Storage } = require('./lib/Storage')
 const { EntriesChecker } = require('./lib/EntriesChecker')
+const { EmailSender } = require('./lib/EmailSender')
 
 let scrape = async () => {
     const browser = await puppeteer.launch({
@@ -16,10 +17,21 @@ let scrape = async () => {
     return result
 }
 
+let sendEmail = async (newHouses) => {
+    const sender = new EmailSender();
+    return await sender.sendHouseUpdateEmail({
+        newHouses
+    })
+    sender.close()
+}
+
 scrape().then(async (data) => {
     console.log('All Found:', data)
     const storage = new Storage('./workdir/houses.json');
     const newItems = await new EntriesChecker(storage).filterNewEntries('ortec', data)
     console.log('New Items:', newItems)
-    storage.save('ortec', newItems)
+    if (newItems && newItems.length > 0) {
+        await sendEmail(newItems)
+        await storage.save('ortec', newItems.map((item) => item.id))
+    }
 })

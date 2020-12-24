@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "email-templates": "^8.0.2",
+    "pug": "^3.0.0",
     "puppeteer": "^5.5.0"
   }
 }
