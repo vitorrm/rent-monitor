@@ -17,9 +17,9 @@ jobs:
         continue-on-error: true
         with:
           name: houses-list
-          path: workdir/houses.json
+          path: ./workdir/houses.json
       - run: npm start
       - uses: actions/upload-artifact@v2
         with:
           name: houses-list
-          path: workdir/houses.json
+          path: ./workdir/houses.json
