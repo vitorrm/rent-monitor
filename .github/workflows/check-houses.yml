@@ -27,7 +27,7 @@ jobs:
           workflow_conclusion: success
           name: houses-list
           path: workdir
-      - run: npm start
+      - run: npm start -- --email-pass ${{secrets.SMTP_EMAIL_USER}} --email-pass ${{secrets.SMTP_EMAIL_PASS}} 
       - uses: actions/upload-artifact@v2
         with:
           name: houses-list

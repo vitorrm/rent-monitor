@@ -1,4 +1,8 @@
 const puppeteer = require('puppeteer')
+const yargs = require('yargs/yargs')
+const { hideBin } = require('yargs/helpers')
+const argv = yargs(hideBin(process.argv)).argv
+
 const { OrtecPage } = require('./lib/OrtecPage')
 const { Storage } = require('./lib/Storage')
 const { EntriesChecker } = require('./lib/EntriesChecker')
@@ -18,7 +22,10 @@ let scrape = async () => {
 }
 
 let sendEmail = async (newHouses) => {
-    const sender = new EmailSender();
+    const sender = new EmailSender({
+        user: argv.emailUser,
+        pass: argv.emailPass
+    });
     return await sender.sendHouseUpdateEmail({
         newHouses
     })
