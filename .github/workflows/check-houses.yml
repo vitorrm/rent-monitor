@@ -14,11 +14,15 @@ jobs:
           node-version: '12'
       - run: npm install
       - run: mkdir -p workdir
-      - uses: actions/download-artifact@v2
+      - name: Download artifact
         continue-on-error: true
+        uses: dawidd6/action-download-artifact@v2
         with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          workflow: check-houses.yml
+          workflow_conclusion: success
           name: houses-list
-          path: workdir/houses.json
+          path: workdir
       - run: npm start
       - uses: actions/upload-artifact@v2
         with:
