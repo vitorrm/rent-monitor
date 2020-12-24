@@ -18,7 +18,7 @@ let scrape = async () => {
 
 scrape().then(async (data) => {
     console.log('All Found:', data)
-    const storage = new Storage('./houses.json');
+    const storage = new Storage('./workdir/houses.json');
     const newItems = await new EntriesChecker(storage).filterNewEntries('ortec', data)
     console.log('New Items:', newItems)
     storage.save('ortec', newItems)
