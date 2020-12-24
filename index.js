@@ -37,8 +37,8 @@ scrape().then(async (data) => {
     const storage = new Storage('./workdir/houses.json');
     const newItems = await new EntriesChecker(storage).filterNewEntries('ortec', data)
     console.log('New Items:', newItems)
-    await sendEmail(newItems)
     if (newItems && newItems.length > 0) {
+        await sendEmail(newItems)
         await storage.save('ortec', newItems.map((item) => item.id))
     }
 })
