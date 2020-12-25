@@ -26,10 +26,11 @@ let sendEmail = async (newHouses) => {
         user: argv.emailUser,
         pass: argv.emailPass
     });
-    return await sender.sendHouseUpdateEmail({
+    await sender.sendHouseUpdateEmail({
         newHouses
     })
     sender.close()
+    return;
 }
 
 scrape().then(async (data) => {
