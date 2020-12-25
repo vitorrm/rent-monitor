@@ -2,29 +2,45 @@ head
   link(rel='stylesheet' href='./style.css' data-inline='data-inline')
 body
   h2 Ortec
-  h3 New Houses
-  table
-    tbody
-      tr
-        th
-          table
-            tbody
-              tr
-                th
-                  | Image
-                th
-                  | Info
-                th
-                  | Link
-              each house in newHouses
+  if newHouses && newHouses.length > 0
+    h3 New Houses
+    table
+      tbody
+        tr
+          th
+            table
+              tbody
                 tr
-                  td
-                    img(src=house.img style='width: 280px; height: 180px;')
-                  td
-                    | #{house.location}
-                    br
-                    span(style='color:#a6afbf!important;font-size:12px;font-weight:400')
-                    | #{house.value}
-                  td
-                    a.link(href=house.url target='_blank') See
+                  th
+                    | Image
+                  th
+                    | Info
+                  th
+                    | Link
+                each house in newHouses
+                  tr
+                    td
+                      img(src=house.img style='width: 280px; height: 180px;')
+                    td
+                      | #{house.location}
+                      br
+                      span(style='color:#a6afbf!important;font-size:12px;font-weight:400')
+                      | #{house.value}
+                    td
+                      a.link(href=house.url target='_blank') See
+  if removedHouses && removedHouses.length > 0
+    h3 Removed Houses
+    table
+      tbody
+        tr
+          th
+            table
+              tbody
+                tr
+                  th
+                    | Link
+                each house in removedHouses
+                  tr
+                    td
+                      a.link(href=house.url target='_blank') #{house.url}
 

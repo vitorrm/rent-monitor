@@ -14,14 +14,14 @@
         newHouses: [
             new House({
                 id: '/alugar/sp/leme/jardim-adelina/casa/3312477',
-                url: 'https://www.ortec-imoveis.com.br/alugar/sp/leme/jardim-adelina/casa/3312477',
+                group: 'ortec',
                 img: 'https://cdn.uso.com.br/12602/2020/12/135020205.jpg',
                 value: 'R$ 300,00',
                 location: 'JARDIM ADELINA - LEME/SP'
               }),
             new House({
                 id: '/alugar/sp/leme/centro/casa/68651938',
-                url: 'https://www.ortec-imoveis.com.br/alugar/sp/leme/centro/casa/68651938',
+                group: 'ortec',
                 img: 'https://cdn.uso.com.br/12602/2020/10/127209449.jpg',
                 value: 'R$ 3.500,00',
                 location: 'CENTRO - LEME/SP'
