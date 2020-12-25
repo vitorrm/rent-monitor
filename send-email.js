@@ -25,7 +25,7 @@
                 img: 'https://cdn.uso.com.br/12602/2020/10/127209449.jpg',
                 value: 'R$ 3.500,00',
                 location: 'CENTRO - LEME/SP'
-              },
+              }),
         ]
     })
 
