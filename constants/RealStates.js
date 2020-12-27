@@ -1,3 +1,3 @@
 module.exports = {
-    ORTEC: "ortec"
-};
+	ORTEC: 'ortec'
+}
