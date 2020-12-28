@@ -37,7 +37,6 @@ const sendEmail = async ({ newItems, removedItems }) => {
 const isNonEmptyList = (list) => list && list.length > 0
 
 scrape().then(async (data) => {
-	console.log('All Found:', data)
 	const storage = new Storage('./workdir/houses-db.json')
 	const newItems = await new EntriesChecker(storage).filterNewEntries(ORTEC, data)
 	const removedItems = await new EntriesChecker(storage).filterRemovedEntries(ORTEC, data)
