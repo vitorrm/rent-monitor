@@ -38,16 +38,16 @@ const isNonEmptyList = (list) => list && list.length > 0
 
 scrape().then(async (data) => {
 	console.log('All Found:', data)
-	const storage = new Storage('./workdir/houses.json')
+	const storage = new Storage('./workdir/houses-db.json')
 	const newItems = await new EntriesChecker(storage).filterNewEntries(ORTEC, data)
 	const removedItems = await new EntriesChecker(storage).filterRemovedEntries(ORTEC, data)
 	console.log('New Items:', newItems)
 	console.log('Removed Items:', removedItems)
 	if (isNonEmptyList(newItems) || isNonEmptyList(removedItems)) {
 		await sendEmail({ newItems, removedItems })
-		await storage.save(ORTEC, {
-			newItems: newItems.map((item) => item.id),
-			removedItems: removedItems.map((item) => item.id)
+		storage.save(ORTEC, {
+			newItems: newItems,
+			removedItems: removedItems
 		})
 	}
 })

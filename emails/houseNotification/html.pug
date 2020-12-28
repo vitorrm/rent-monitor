@@ -38,9 +38,20 @@ body
               tbody
                 tr
                   th
+                    | Image
+                  th
+                    | Info
+                  th
                     | Link
                 each house in removedHouses
                   tr
+                    td
+                      img(src=house.img style='width: 280px; height: 180px;')
+                    td
+                      | #{house.location}
+                      br
+                      span(style='color:#a6afbf!important;font-size:12px;font-weight:400')
+                      | #{house.value}
                     td
                       a.link(href=house.url target='_blank') #{house.url}
 

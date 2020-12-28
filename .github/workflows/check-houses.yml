@@ -31,4 +31,5 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: houses-list
-          path: workdir/houses.json
+          path: workdir/houses-db.json
+          retention-days: 5
